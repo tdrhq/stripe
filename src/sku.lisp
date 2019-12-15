@@ -25,7 +25,7 @@
       data
     (reinitialize-instance
      instance
-     :attributes (a:plist-hash-table attributes :test #'equal)
+     :attributes (alexandria:plist-hash-table attributes :test #'equal)
      :created (decode-timestamp created)
      :inventory (make-instance 'sku-inventory :data inventory)
      :package-dimensions (make-instance 'package-dimensions

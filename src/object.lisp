@@ -1,16 +1,16 @@
 (in-package #:stripe)
 
 (defmacro define-object (name super-classes &body fields)
-  (a:with-gensyms (stream)
+  (alexandria:with-gensyms (stream)
     (let ((slots (mapcar
                   (lambda (x)
-                    (let ((name (a:ensure-list x)))
+                    (let ((name (alexandria:ensure-list x)))
                       (destructuring-bind (name
                                            &key (reader name) extra-initargs)
                           name
-                        `(,(a:symbolicate '#:% name)
+                        `(,(alexandria:symbolicate '#:% name)
                           :reader ,reader
-                          :initarg ,(a:make-keyword name)
+                          :initarg ,(alexandria:make-keyword name)
                           ,@(when extra-initargs
                               `(,@(mapcan
                                    (lambda (x)
@@ -23,7 +23,7 @@
                    `(,super-classes)
                    `((stripe-object)))
            ,slots)
-         (gu:define-printer (,name ,stream :type nil)
+         (golden-utils:define-printer (,name ,stream :type nil)
            (if (and (slot-exists-p ,name '%id)
                     (slot-boundp ,name '%id))
                (format ,stream "~a ~a" ',name (id ,name))

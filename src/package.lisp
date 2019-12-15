@@ -1,8 +1,6 @@
 (in-package #:cl-user)
 
 (defpackage #:stripe
-  (:local-nicknames (#:a #:alexandria)
-                    (#:gu #:golden-utils))
   (:use #:cl)
 
   ;; common
