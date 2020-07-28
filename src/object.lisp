@@ -1,16 +1,16 @@
-(in-package #:stripe)
+(in-package #:net.mfiano.lisp.stripe)
 
 (defmacro define-object (name super-classes &body fields)
-  (alexandria:with-gensyms (stream)
+  (net.mfiano.lisp.golden-utils:with-gensyms (stream)
     (let ((slots (mapcar
                   (lambda (x)
-                    (let ((name (alexandria:ensure-list x)))
+                    (let ((name (net.mfiano.lisp.golden-utils:ensure-list x)))
                       (destructuring-bind (name
                                            &key (reader name) extra-initargs)
                           name
-                        `(,(alexandria:symbolicate '#:% name)
+                        `(,(net.mfiano.lisp.golden-utils:symbolicate '#:% name)
                           :reader ,reader
-                          :initarg ,(alexandria:make-keyword name)
+                          :initarg ,(net.mfiano.lisp.golden-utils:make-keyword name)
                           ,@(when extra-initargs
                               `(,@(mapcan
                                    (lambda (x)
@@ -23,7 +23,7 @@
                    `(,super-classes)
                    `((stripe-object)))
            ,slots)
-         (golden-utils:define-printer (,name ,stream :type nil)
+         (net.mfiano.lisp.golden-utils:define-printer (,name ,stream :type nil)
            (if (and (slot-exists-p ,name '%id)
                     (slot-boundp ,name '%id))
                (format ,stream "~a ~a" ',name (id ,name))

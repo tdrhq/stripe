@@ -1,13 +1,12 @@
 (in-package #:cl-user)
 
-(defpackage #:stripe
+(defpackage #:net.mfiano.lisp.stripe
   (:use #:cl)
-
+  (:nicknames :stripe)
   ;; common
   (:export
    #:*api-version*
    #:*api-key*)
-
   ;; conditions
   (:export
    #:stripe-error
@@ -98,7 +97,6 @@
    #:transfers-not-allowed
    #:upstream-order-creation-failed
    #:url-invalid)
-
   ;; accessors
   (:export
    #:active
@@ -317,7 +315,6 @@
    #:webhooks-delivered-at
    #:weight
    #:width)
-
   ;; requests
   (:export
    #:cancel-payout
