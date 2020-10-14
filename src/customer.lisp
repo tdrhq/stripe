@@ -51,6 +51,7 @@
   coupon
   default-source
   description
+  invoice-settings
   email
   name
   phone
