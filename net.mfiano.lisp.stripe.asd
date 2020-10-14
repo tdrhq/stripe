@@ -23,6 +23,7 @@
    (:file "card")
    (:file "charge")
    (:file "coupon")
+   (:file "source")
    (:file "credit-note")
    (:file "customer")
    (:file "customer-balance-transaction")
