@@ -8,7 +8,7 @@
   :encoding :utf-8
   :depends-on (#:dexador
                #:local-time
-               #:net.mfiano.lisp.golden-utils
+               #:golden-utils
                #:yason)
   :pathname "src"
   :serial t

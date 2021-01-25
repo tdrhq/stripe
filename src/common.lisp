@@ -10,7 +10,7 @@
   (substitute #\- #\_ (string-upcase string) :test #'char=))
 
 (defun normalize-json-key (string)
-  (net.mfiano.lisp.golden-utils:make-keyword (normalize-string string)))
+  (golden-utils:make-keyword (normalize-string string)))
 
 
 (defun decode-list (list)
